@@ -19,7 +19,8 @@ const UiTheme: DefaultTheme = {
 		secondary: '#373737'
 	},
 
-	linearGradient: '114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%'
+	linearGradient:
+		'linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%);'
 };
 
 export default UiTheme;

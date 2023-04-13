@@ -1,10 +1,10 @@
-import MyBtn from '../UI/MyBtn/MyBtn';
 import './App.css';
+import UserCard from './UserCard/UserCard';
 
 function App() {
 	return (
 		<div className="App">
-			<MyBtn name="MyBtn" isActive={false} />
+			<UserCard />
 		</div>
 	);
 }
