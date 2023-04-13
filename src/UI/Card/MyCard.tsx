@@ -11,12 +11,18 @@ import {
 } from './index.styled';
 
 import avatar from '../../img/Hansel.png';
+import IUser from '../../interface/IUser';
 
-interface IProps {
+interface IProps extends IUser {
 	children?: JSX.Element[] | JSX.Element;
 }
 
-const Card: React.FunctionComponent<IProps> = ({ children }) => {
+const Card: React.FunctionComponent<IProps> = ({
+	avatar,
+	tweets,
+	followers,
+	children
+}) => {
 	return (
 		<Container>
 			<LogoContainer>
@@ -31,8 +37,8 @@ const Card: React.FunctionComponent<IProps> = ({ children }) => {
 			</AvatarContainer>
 
 			<TextContainer>
-				<p> 100,500 tweets</p>
-				<p> 10,453 followers</p>
+				<p> {tweets} tweets</p>
+				<p> {followers} followers</p>
 			</TextContainer>
 
 			{children && <ChildrenContainer>{children}</ChildrenContainer>}
