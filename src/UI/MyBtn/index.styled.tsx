@@ -17,6 +17,7 @@ const Button = styled.button`
 
 	font-family: ${(props) => props.theme.fontFamily};
 	font-size: ${(props) => props.theme.fontSize.btnSize};
+	text-transform: uppercase;
 
 	background-color: ${(props: ButtonProps) =>
 		props.isActive ? props.theme.color.activeBtnColor : props.theme.color.main};

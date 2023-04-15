@@ -10,11 +10,12 @@ import {
 	ChildrenContainer
 } from './index.styled';
 
-import avatar from '../../img/Hansel.png';
-import IUser from '../../interface/IUser';
-
-interface IProps extends IUser {
+interface IProps {
 	children?: JSX.Element[] | JSX.Element;
+	avatar: string;
+	tweets: string;
+	followers: string;
+	user: string;
 }
 
 const Card: React.FunctionComponent<IProps> = ({
