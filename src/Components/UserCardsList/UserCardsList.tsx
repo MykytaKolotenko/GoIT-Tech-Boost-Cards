@@ -1,5 +1,6 @@
 import { useGetUsersQuery } from '../../Redux/userApi';
 import UserCard from '../UserCard/UserCard';
+import { List } from './index.styled';
 
 function UserCardsList() {
 	const { data, isFetching } = useGetUsersQuery('');
@@ -8,17 +9,21 @@ function UserCardsList() {
 		<>
 			{isFetching && <h1>IsLoading</h1>}
 
-			{!isFetching &&
-				data?.map(({ id, user, avatar, tweets, followers }) => (
-					<UserCard
-						key={id}
-						id={id}
-						user={user}
-						avatar={avatar}
-						tweets={tweets}
-						followers={followers}
-					/>
-				))}
+			<List>
+				{!isFetching &&
+					data?.map(({ id, user, avatar, tweets, followers, subscribed }) => (
+						<li key={id}>
+							<UserCard
+								id={id}
+								user={user}
+								avatar={avatar}
+								tweets={tweets}
+								followers={followers}
+								subscribed={subscribed}
+							/>
+						</li>
+					))}
+			</List>
 		</>
 	);
 }

@@ -4,4 +4,5 @@ export default interface IUser {
     tweets: number;
     followers: number;
     avatar: string;
+    subscribed: boolean;
 }

@@ -16,13 +16,16 @@ interface IProps {
 	tweets: string;
 	followers: string;
 	user: string;
+	id: string;
+	btnAction?: () => void;
 }
 
 const Card: React.FunctionComponent<IProps> = ({
 	avatar,
 	tweets,
 	followers,
-	children
+	children,
+	id
 }) => {
 	return (
 		<Container>

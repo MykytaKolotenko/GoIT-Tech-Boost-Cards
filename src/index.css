@@ -3,7 +3,12 @@
 
 body {
   margin: 0;
+
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
+
+  background-color: #766A92;
+  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

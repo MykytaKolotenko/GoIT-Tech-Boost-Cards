@@ -1,10 +1,19 @@
-{"useTabs": true,      
-    "printWidth": 80,     
-    "tabWidth": 1,         
-    "singleQuote": true,  
-    "trailingComma": "none",
-    "jsxBracketSameLine": false,
-    "parser": "babel",
-    "noSemi": true,
-    "rcVerbose": true 
+{
+  "useTabs": true,
+  "printWidth": 80,
+  "tabWidth": 1,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "jsxBracketSameLine": false,
+  "parser": "babel",
+  "noSemi": true,
+  "rcVerbose": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false
+  },
+  "semi": false, 
+  "arrowParens": "avoid"
 }

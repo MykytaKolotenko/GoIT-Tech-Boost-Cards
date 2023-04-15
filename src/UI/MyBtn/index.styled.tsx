@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import styled from 'styled-components';
-import { DefaultTheme } from 'styled-components';
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react'
+import styled from 'styled-components'
+import { DefaultTheme } from 'styled-components'
 
 interface ButtonProps
 	extends Omit<
@@ -15,8 +15,8 @@ const Button = styled.button`
 	width: 196px;
 	height: 50px;
 
-	font-family: ${(props) => props.theme.fontFamily};
-	font-size: ${(props) => props.theme.fontSize.btnSize};
+	font-family: ${props => props.theme.fontFamily};
+	font-size: ${props => props.theme.fontSize.btnSize};
 	text-transform: uppercase;
 
 	background-color: ${(props: ButtonProps) =>
@@ -36,6 +36,6 @@ const Button = styled.button`
 		transform: scale(1.2);
 		transition: transform 150ms ease-in-out, color 150ms ease-in-out;
 	}
-`;
+`
 
-export default Button;
+export default Button
