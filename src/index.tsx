@@ -6,15 +6,18 @@ import UiTheme from './UI/Theme/theme'
 import './index.css'
 import { store } from './Redux/store'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 
 const root =
 	createRoot(document.getElementById("root") as HTMLElement);
 	root.render(
 		<React.StrictMode>
-			<ThemeProvider theme={UiTheme}>
-				<Provider store={store}>
-					<App />
-				</Provider>
-			</ThemeProvider>
+			<BrowserRouter>
+				<ThemeProvider theme={UiTheme}>
+					<Provider store={store}>
+						<App />
+					</Provider>
+				</ThemeProvider>
+			</BrowserRouter>
 		</React.StrictMode>
 	)

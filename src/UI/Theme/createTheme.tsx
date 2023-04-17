@@ -1,7 +1,8 @@
 import 'styled-components';
 
 declare module 'styled-components' {
-  export interface DefaultTheme {
+	export interface DefaultTheme {
+	  width:number,
     fontFamily: string,
 	fontWeight: {
 		normal: number,

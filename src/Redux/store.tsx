@@ -3,7 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import rootReducer from './rootReducer'
 import middleware from './rootMiddleware'
 
-export type RootState = ReturnType<typeof rootReducer>
+export type IRootState = ReturnType<typeof rootReducer>
 
 export const store = configureStore({
 	reducer: rootReducer,

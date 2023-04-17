@@ -1,10 +1,19 @@
-import UserCardsList from './UserCardsList/UserCardsList'
+import { Route, Routes } from 'react-router'
+import Home from '../Pages/Home'
+import Header from './Header/Header'
+import Tweets from '../Pages/Tweets'
 
 function App() {
 	return (
-		<div className="App">
-			<UserCardsList />
-		</div>
+		<>
+			<Header />
+
+			<Routes>
+				<Route path="/" element={<Home />} />
+
+				<Route path="/tweets" element={<Tweets />} />
+			</Routes>
+		</>
 	)
 }
 

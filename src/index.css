@@ -7,11 +7,20 @@ body {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
 
-  background-color: #766A92;
+  background-image: linear-gradient(114.99deg, #311375 -0.99%, #33205f 54.28%, #2b1858 78.99%);;
   
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 
+.container {
+  width: 1000px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
 
+#id {
+  min-height: 120%;
+}
