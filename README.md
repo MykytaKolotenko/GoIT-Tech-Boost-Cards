@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# Project Title
+HackTweet is a web-based social media platform designed exclusively for hackers to share their thoughts and experiences in the world of cybersecurity. The platform provides a central hub where hackers around the world can create and publish tweets related to their experiences, new discoveries, opinions, and insights about various topics related to information security.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Users can sign up for an account on HackTweet, create a profile, and start sharing their tweets with others in the community. They can also follow other users to keep up-to-date with the latest happenings in the security industry and engage with them through comments, likes, and retweets.
 
-## Available Scripts
+The platform is designed with features that promote collaboration and knowledge-sharing among like-minded individuals. Users can search for tweets using keywords or hashtags, filter results by date, popularity, or relevance, and join groups of interest to connect with others who share similar interests and expertise. There is also a public feed that displays the most popular and trending tweets across the entire platform.
 
-In the project directory, you can run:
+Overall, HackTweet aims to provide a safe and welcoming environment for hackers worldwide to share their ideas, learn from one another, and contribute to the larger security community.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributors](#contributors)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+TypeScript, React, Redux, RTK Query.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+1. Clone this repository.
+2. Run `npm install`.
+3. Run `npm start`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Usage
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You can connect your own api using this user sheme:
+    - "user": a string indicating the user's name
+    - "tweets": an integer indicating how many tweets the user has posted
+    - "followers": an integer indicating how many followers the user has
+    - "avatar": a string representing the URL of the user's avatar image
+    - "subscribed": a boolean indicating whether or not the user is subscribed to the service
+    - "id": a unique identifier for the user
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributors
 
-### `npm run eject`
+- Mykyta Kolotenko
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
