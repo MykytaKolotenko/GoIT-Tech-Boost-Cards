@@ -12,7 +12,7 @@ const root =
 	createRoot(document.getElementById("root") as HTMLElement);
 	root.render(
 		<React.StrictMode>
-			<BrowserRouter>
+			<BrowserRouter basename='GoIT-Tech-Boost-Cards'>
 				<ThemeProvider theme={UiTheme}>
 					<Provider store={store}>
 						<App />
