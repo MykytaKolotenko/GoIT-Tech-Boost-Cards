@@ -12,16 +12,16 @@ export interface IUserPutQuery {
 export interface IFetchParams {
     page: number;
     limit: number;
+    filter: string;
 }
-
-
-
 
 const URL = 'https://6437c39e894c9029e8c54c4c.mockapi.io/Users';
 
 export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({ baseUrl: URL }),
+    keepUnusedDataFor: 0,
+    refetchOnMountOrArgChange: true,
     endpoints: build => ({
        
         getUsers: build.query<
@@ -29,22 +29,25 @@ export const userApi = createApi({
             string
         >({
             query: (arg) => {
-                const {page, limit}:IFetchParams = JSON.parse(arg)
-
-                return `?p=${page}&&limit=${limit}`
-            },
-            serializeQueryArgs: ({ endpointName }) => {
-        return endpointName
-      },
-
-              
-      merge: (currentCache, newItems) => {
-        currentCache.push(...newItems)
-      },
-    
-            forceRefetch({ currentArg, previousArg }) {
-                return currentArg !== previousArg
-            }
+                const { page, limit, filter }: IFetchParams = JSON.parse(arg)
+                
+                switch (filter) {
+                    case "all":
+                        return `?p=${page}&&limit=${limit}`
+                    
+                    case "follow":
+                        return `?p=${page}&&limit=${limit}&&subscribed=false`
+                    
+                    case "following":
+                        return `?p=${page}&&limit=${limit}&&subscribed=true`
+                        
+                    
+                    default :
+                        return `/dsadasd`
+                }
+                
+            }, 
+  
         }),
         
         changeFollowers: build.mutation<

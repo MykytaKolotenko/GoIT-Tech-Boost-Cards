@@ -1,13 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import IUser from '../interface/IUser'
 
 export interface IPageParametes {
 	limit: number;
 	page: number;
 	loader: boolean;
+	usersFilter: string;
+	userData: Array<IUser>;
 }
 
-const initialState: IPageParametes = { page: 1, limit: 10, loader: false }
+const initialState: IPageParametes = {
+	page: 1,
+	limit: 10,
+	loader: false,
+	usersFilter: 'all',
+	userData: []
+}
 
 const pageParametes = createSlice({
 	name: 'PageParameters',
@@ -30,6 +39,15 @@ const pageParametes = createSlice({
 		},
 		onMainLoader: state => {
 			state.loader = true
+		},
+		changeUsersFilter: (state, action: PayloadAction<string>) => {
+			state.usersFilter = action.payload
+		},
+		addUserData: (state, action: PayloadAction<Array<IUser>>) => {
+			state.userData = [...state.userData, ...action.payload]
+		},
+		deleteUserData: state => {
+			state.userData = []
 		}
 	}
 })
@@ -40,6 +58,9 @@ export const {
 	setPage,
 	setLimit,
 	offMainLoader,
-	onMainLoader
+	onMainLoader,
+	changeUsersFilter,
+	addUserData,
+	deleteUserData
 } = pageParametes.actions
 export default pageParametes.reducer

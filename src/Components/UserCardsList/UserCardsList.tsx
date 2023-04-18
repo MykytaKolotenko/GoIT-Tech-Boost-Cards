@@ -1,53 +1,70 @@
-import React, { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { List } from './index.styled';
+import { List, LoadMore, MyP } from './index.styled';
 import { useGetUsersQuery } from '../../Redux/userApi';
 import addUrlParameters from '../../helpers/addUrlParameters';
-import UserCard from '../UserCard/UserCard';
 import { IRootState } from '../../Redux/store';
-import { IPageParametes, incrementPage, offMainLoader, onMainLoader } from '../../Redux/pageParametersSlice';
+import { IPageParametes, addUserData, deleteUserData, incrementPage, setPage } from '../../Redux/pageParametersSlice';
+import UsersDropDown from '../UsersDropDown/UsersDropDown';
+import UserCard from '../UserCard/UserCard';
+import Spinner from '../Spinner/Spinner';
 
-const UserCardsList = () => {
-  const { page, limit, loader } = useSelector<IRootState, IPageParametes>(({ pageParameters }) => pageParameters);
+interface Props {}
+
+const UserCardsList = (props: Props) => {
+  const { page, limit, usersFilter, userData } = useSelector<IRootState, IPageParametes>(({ pageParameters }) => pageParameters);
   const dispatch = useDispatch();
 
-  const { data, isFetching} = useGetUsersQuery(addUrlParameters(page, limit));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleLoadMore = useCallback(() => dispatch(incrementPage()), []);
+  const { data, isFetching } = useFetchData(page, limit, usersFilter);
+
+  const handleLoadMore = useCallback(() => dispatch(incrementPage()), [dispatch]);
 
   useEffect(() => {
-    if (loader) {
-      dispatch(onMainLoader());
-    } else if ( data!==undefined &&  data.length > 0) {
-      dispatch(offMainLoader());
+    dispatch(deleteUserData());
+  }, [dispatch, usersFilter]);
+
+  useEffect(() => {
+    return () => {dispatch(setPage(1))}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
+  useEffect(() => {
+    if (data) {
+      dispatch(addUserData(data));
     }
-  }, [data, dispatch, loader]);
+  }, [data, dispatch]);
 
-  
-
-  console.log(data);
-  
 
   return (
     <>
-      {loader && <div>Loading</div>}
-	  
-      {!loader && data!==undefined && (
-        <div className='container'>
-        
+
+      {data !== undefined && (
+        <div className="container">
+          <UsersDropDown />
+
           <List>
-            {data?.map(({ id, user, avatar, tweets, followers, subscribed }) => (
-              <li key={id}>
-                <UserCard id={id} user={user} avatar={avatar} tweets={tweets} followers={followers} subscribed={subscribed} />
-              </li>
+            {userData.map(({ id, user, avatar, tweets, followers, subscribed }) => (
+              <UserCard key={id} id={id} user={user} avatar={avatar} tweets={tweets} followers={followers} subscribed={subscribed} />
             ))}
           </List>
-          
-          {isFetching ?<div>Loading</div> : <button onClick={handleLoadMore}>load more</button>}
+
+          {isFetching ? <Spinner />
+            :
+            data.length > 0 ?
+              <LoadMore onClick={handleLoadMore}>load more</LoadMore>
+              :
+              <MyP>No more data</MyP>}
         </div>
       )}
     </>
   );
+};
+
+const useFetchData = (page: number, limit: number, usersFilter: string): { data?: any; isFetching: boolean } => {
+  const query = addUrlParameters(page, limit, usersFilter);
+  const { data, isFetching } = useGetUsersQuery(query);
+
+  return { data, isFetching };
 };
 
 export default UserCardsList;

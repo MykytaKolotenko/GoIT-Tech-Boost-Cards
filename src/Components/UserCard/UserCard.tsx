@@ -1,63 +1,65 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { IUserPutQuery, useChangeFollowersMutation } from '../../Redux/userApi'
 import MyCardUi from '../../UI/Card/MyCard'
 import MyBtnUi from '../../UI/MyBtn/MyBtnUi'
 import addCommaToNumber from '../../helpers/addCommaToNumber'
-import IUser from '../../interface/IUser'
 import { Notify } from 'notiflix/build/notiflix-notify-aio'
 import customErrorMessage from '../../options/customErrorMessage'
 
-const UserCard: React.FunctionComponent<IUser> = ({
+interface Props {
+	user: string;
+	avatar: string;
+	followers: number;
+	tweets: number;
+	id: string;
+	subscribed: boolean;
+}
+
+const UserCard = ({
 	user,
 	avatar,
 	followers,
 	tweets,
 	id,
 	subscribed
-}) => {
+}: Props) => {
 	const [updateFollowers, { isError }] = useChangeFollowersMutation()
 	const [isSubscribed, setIsSubscribed] = useState(subscribed)
-	const [followersAmount, setIsfollowersAmount] = useState(followers)
+	const [followerCount, setFollowerCount] = useState(followers)
 
-	const handleClick = () => {
-		if (isSubscribed) {
-			const putData: IUserPutQuery = {
-				id,
-				subscribed: !isSubscribed,
-				followers: followersAmount - 1
-			}
-			updateFollowers(putData)
+	const updateFollowerCount = useCallback(
+		(count: number) => {
+			setFollowerCount(count)
+			setIsSubscribed(!isSubscribed)
+		},
+		[setIsSubscribed, isSubscribed]
+	)
 
+	const handleClick = useCallback(() => {
+		const count = isSubscribed ? followerCount - 1 : followerCount + 1
+		const putData: IUserPutQuery = {
+			id,
+			subscribed: !isSubscribed,
+			followers: count
+		}
+
+		updateFollowers(putData)?.then(() => {
 			if (!isError) {
-				setIsSubscribed(prev => !prev)
-				setIsfollowersAmount(prev => prev - 1)
+				updateFollowerCount(count)
 			} else {
 				Notify.failure(customErrorMessage.putError)
 			}
+		})
+	}, [
+		id,
+		isSubscribed,
+		followerCount,
+		updateFollowers,
+		isError,
+		updateFollowerCount
+	])
 
-			return
-		}
-
-		if (!isSubscribed) {
-			const putData: IUserPutQuery = {
-				id,
-				subscribed: !isSubscribed,
-				followers: followersAmount + 1
-			}
-			updateFollowers(putData)
-
-			if (!isError) {
-				setIsSubscribed(prev => !prev)
-				setIsfollowersAmount(prev => prev + 1)
-			} else {
-				Notify.failure(customErrorMessage.putError)
-			}
-
-			return
-		}
-	}
-
-	const followersStringWithComma = addCommaToNumber(followersAmount)
+	const followersStringWithComma = addCommaToNumber(followerCount)
 	const tweetsStringWithComma = addCommaToNumber(tweets)
 
 	return (
