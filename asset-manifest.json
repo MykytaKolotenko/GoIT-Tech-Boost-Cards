@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/GoIT-Tech-Boost-Cards/static/css/main.71358be4.css",
-    "main.js": "/GoIT-Tech-Boost-Cards/static/js/main.320e0f8b.js",
+    "main.js": "/GoIT-Tech-Boost-Cards/static/js/main.c6dc51e1.js",
     "static/media/medium-shot-happy-friends-taking-selfie.jpg": "/GoIT-Tech-Boost-Cards/static/media/medium-shot-happy-friends-taking-selfie.df8ad38fc50f11c658ea.jpg",
     "static/media/question.svg": "/GoIT-Tech-Boost-Cards/static/media/question.23dcbc3cc8ccc9682f24b4acffb5efb2.svg",
     "static/media/GoIt.svg": "/GoIT-Tech-Boost-Cards/static/media/GoIt.e917114d7945c04c85a8946a331d28b6.svg",
     "index.html": "/GoIT-Tech-Boost-Cards/index.html",
     "main.71358be4.css.map": "/GoIT-Tech-Boost-Cards/static/css/main.71358be4.css.map",
-    "main.320e0f8b.js.map": "/GoIT-Tech-Boost-Cards/static/js/main.320e0f8b.js.map"
+    "main.c6dc51e1.js.map": "/GoIT-Tech-Boost-Cards/static/js/main.c6dc51e1.js.map"
   },
   "entrypoints": [
     "static/css/main.71358be4.css",
-    "static/js/main.320e0f8b.js"
+    "static/js/main.c6dc51e1.js"
   ]
 }
