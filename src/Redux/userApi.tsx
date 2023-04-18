@@ -1,8 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import IUser from '../interface/IUser';
 
-
-
 export interface IUserPutQuery {
     id: string;
     followers: number;
